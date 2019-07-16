@@ -25,4 +25,4 @@ class getImage(Resource):
 
 api.add_resource(getImage,"/getImage/<string:imageName>")
 
-app.run(debug=True)
+# app.run(debug=True)
