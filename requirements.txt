@@ -7,3 +7,4 @@ MarkupSafe==1.1.1
 Werkzeug==0.15.2
 Click==7.0
 Pillow==5.4.1
+requests==2.21.0
