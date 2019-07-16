@@ -4,6 +4,7 @@ from PIL import Image
 import requests
 from io import BytesIO
 from flask import send_file
+import time
 
 app = Flask(__name__)
 api = Api(app)
@@ -19,7 +20,7 @@ class getImage(Resource):
         response = requests.get(url)
         if(response):
         # if no response this return will not happen. return outside if statement will return stream of empty Out image instantiated above
-            #time.sleep(loadTime)
+            time.sleep(float(loadTime))
             return send_file(BytesIO(response.content), mimetype='image/png')
 
 api.add_resource(getImage,"/getImage/<string:imageName>")
