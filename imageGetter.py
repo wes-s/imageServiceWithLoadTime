@@ -1,0 +1,27 @@
+from flask import Flask, request
+from flask_restful import Api, Resource, reqparse
+from PIL import Image
+import requests
+from io import BytesIO
+from flask import send_file
+
+app = Flask(__name__)
+api = Api(app)
+
+class getImage(Resource):
+    def get(self, imageName):        
+        args = request.args
+        
+        loadTime = args['load']
+
+        outImg = Image.new('RGBA', (256, 256), (255, 0, 0, 0))
+        url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+        response = requests.get(url)
+        if(response):
+        # if no response this return will not happen. return outside if statement will return stream of empty Out image instantiated above
+            #time.sleep(loadTime)
+            return send_file(BytesIO(response.content), mimetype='image/png')
+
+api.add_resource(getImage,"/getImage/<string:imageName>")
+
+app.run(debug=True)
