@@ -25,5 +25,5 @@ class getImage(Resource):
 
 api.add_resource(getImage,"/getImage/<string:imageName>")
 
-#Uncomment below and run in terminal with 'python app.py' for local webserver using flask dev 
+#Uncomment below and run in terminal with 'python app.py' for local webserver using flask dev
 #app.run(debug=True)
