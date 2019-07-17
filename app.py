@@ -35,4 +35,4 @@ api.add_resource(getImage,"/getImage/<string:imageName>")
 
 # run.py in local werkzeug simple server if locally testing
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
