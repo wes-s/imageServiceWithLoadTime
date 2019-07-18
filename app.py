@@ -12,25 +12,32 @@ api = Api(app)
 class getImage(Resource):
     def get(self, imageName):
 
-        if request.args: 
-            try:
-                loadTime = request.args['load']
-            except IndexError:
-                loadTime = 0
+        imageService = ['https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+                        ,'https://picsum.photos/550/800'
+                        ,'https://inspirobot.me/api?generate=true']
 
+        if request.args:
+            loadTime = request.args.get('load',0)
+            try:
+                imageSource = imageService[int(request.args.get('source', '0'))]
+            except IndexError:
+                imageSource = imageService[0]
+        else:
+            loadTime = 0
+            imageSource = imageService[0]
+            
         outImg = Image.new('RGBA', (256, 256), (255, 0, 0, 0))
 
-        # inspirobot can be a bit racy
-        # ibURL = 'https://inspirobot.me/api?generate=true'
-        # url = requests.get(ibURL).content
-        # if not url:
-        #    url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
-
-        # picsum was adding a little extra delay so I've switched back to wikimedia
-        # url = 'https://picsum.photos/550/800'
-
-        url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
-
+        if int(request.args.get('source',0)) == 2:
+            # inspirobot can be a bit racy
+            url = requests.get(imageSource).content
+            if not url:
+               url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+        else:
+            # picsum was adding a little extra delay so I've switched back to wikimedia
+            # url = 'https://picsum.photos/550/800'
+            url = imageSource
+        
         response = requests.get(url)
         
         if(response):
@@ -38,7 +45,8 @@ class getImage(Resource):
             time.sleep(float(loadTime))
             return send_file(BytesIO(response.content), mimetype='image/png')
         else:
-            return send_file(BytesIO(outImg), mimetype = 'image/png') 
+            return send_file(BytesIO(outImg), mimetype = 'image/png')
+        
 
 api.add_resource(getImage,"/getImage/<string:imageName>")
 
