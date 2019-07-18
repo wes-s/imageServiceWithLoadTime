@@ -21,13 +21,16 @@ class getImage(Resource):
         outImg = Image.new('RGBA', (256, 256), (255, 0, 0, 0))
 
         # inspirobot can be a bit racy
-#        ibURL = 'https://inspirobot.me/api?generate=true'
-#        url = requests.get(ibURL).content
-#        if not url:
-#            url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+        # ibURL = 'https://inspirobot.me/api?generate=true'
+        # url = requests.get(ibURL).content
+        # if not url:
+        #    url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
 
-        url = 'https://picsum.photos/550/800'
-         
+        # picsum was adding a little extra delay so I've switched back to wikimedia
+        # url = 'https://picsum.photos/550/800'
+
+        url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+
         response = requests.get(url)
         
         if(response):
