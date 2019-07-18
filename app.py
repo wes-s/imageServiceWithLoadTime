@@ -20,7 +20,7 @@ class getImage(Resource):
 
         outImg = Image.new('RGBA', (256, 256), (255, 0, 0, 0))
 
-        ibURL = 'https://inspirobot.me/api?generate=true'
+        ibURL = 'https://picsum.photos/550/800'
 
         print(str(requests.get(ibURL).content)+' testing, testing, testing')
 
