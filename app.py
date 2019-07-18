@@ -20,16 +20,13 @@ class getImage(Resource):
 
         outImg = Image.new('RGBA', (256, 256), (255, 0, 0, 0))
 
-        # ibURL = 'https://picsum.photos/550/800'
-
-        print(str(requests.get(ibURL).content)+' testing, testing, testing')
-
+        #inspirobot can be a bit racy
+        # ibURL = 'https://inspirobot.me/api?generate=true'
         # url = requests.get(ibURL).content
-
-        url = 'https://picsum.photos/200/300'
-
         # if not url:
         #     url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
+
+        url = 'https://picsum.photos/550/800'
         
         response = requests.get(url)
         
