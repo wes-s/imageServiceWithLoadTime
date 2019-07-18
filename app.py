@@ -24,7 +24,7 @@ class getImage(Resource):
 
         print(str(requests.get(ibURL).content)+' testing, testing, testing')
 
-        url = str(requests.get(ibURL).content)
+        url = requests.get(ibURL).content
 
         if not url:
             url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
