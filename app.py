@@ -34,8 +34,6 @@ class getImage(Resource):
             if not url:
                url = 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Cylon_Centurion_head.jpg'
         else:
-            # picsum was adding a little extra delay so I've switched back to wikimedia
-            # url = 'https://picsum.photos/550/800'
             url = imageSource
         
         response = requests.get(url)
