@@ -2,7 +2,7 @@ Flask==1.0.2
 Flask-RESTful==0.3.7
 gunicorn==19.9.0
 MarkupSafe==1.1.1
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 Click==7.0
 Pillow==5.4.1
 requests==2.21.0
