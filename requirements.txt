@@ -4,7 +4,7 @@ gunicorn==19.9.0
 MarkupSafe==1.1.1
 Werkzeug==0.15.3
 Click==7.0
-Pillow==5.4.1
+Pillow==6.2.1
 requests==2.21.0
 jsonschema==3.0.1
 numpy==1.16.2
