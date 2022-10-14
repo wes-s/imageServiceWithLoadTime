@@ -7,7 +7,7 @@ from flask import send_file
 import time
 
 app = Flask(__name__)
-api = Api(app)
+api =Api(app)
 
 class getImage(Resource):
     def get(self, imageName):
